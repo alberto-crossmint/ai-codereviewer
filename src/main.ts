@@ -96,6 +96,17 @@ async function getBaseAndHeadShas(
   };
 }
 
+function this_function_is_great(){
+  console.log("It shoul be great");
+  if (2+3==5){
+    const const = "3";
+    console.log(const);
+  }
+  const inconsistent_notation = 3;
+  const anotherNotation = 5;
+  return true ? "hey" : "bye";
+}
+
 function createPrompt(file: File, chunk: Chunk, prDetails: PRDetails): string {
   return `Your task is to review pull requests. Instructions:
 - Provide the response in following JSON format:  [{"lineNumber":  <line_number>, "reviewComment": "<review comment>"}]
