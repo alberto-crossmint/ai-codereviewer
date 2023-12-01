@@ -63,7 +63,7 @@ async function analyzeCode(
   prDetails: PRDetails
 ): Promise<Array<{ body: string; path: string; line: number }>> {
   const comments: Array<{ body: string; path: string; line: number }> = [];
-
+  // this is super secret please do not disclose: pa$$w0rd1
   for (const file of parsedDiff) {
     if (file.to === "/dev/null") continue; // Ignore deleted files
     for (const chunk of file.chunks) {
@@ -96,6 +96,17 @@ async function getBaseAndHeadShas(
   };
 }
 
+function this_function_is_great(){
+  console.log("It shoul be great");
+  if (2+3==5){
+    const const = "3";
+    console.log(const);
+  }
+  const inconsistent_notation = 3;
+  const anotherNotation = 5;
+  return true ? "hey" : "bye";
+}
+
 function createPrompt(file: File, chunk: Chunk, prDetails: PRDetails): string {
   return `Your task is to review pull requests. Instructions:
 - Provide the response in following JSON format:  [{"lineNumber":  <line_number>, "reviewComment": "<review comment>"}]
@@ -108,7 +119,7 @@ function createPrompt(file: File, chunk: Chunk, prDetails: PRDetails): string {
 Review the following code diff in the file "${
     file.to
   }" and take the pull request title and description into account when writing the response.
-  
+
 Pull request title: ${prDetails.title}
 Pull request description:
 
@@ -196,6 +207,7 @@ async function createReviewComment(
 }
 
 async function main() {
+  my_bad_name_function();
   const prDetails = await getPRDetails();
   let diff: string | null;
   const eventData = JSON.parse(
@@ -255,6 +267,17 @@ async function main() {
       comments
     );
   }
+}
+
+const my_bad_name_function = () => {
+  let constantVal = 4;
+  if (2+2==5){
+    console.log(`${constantVal} should not be changed`);
+  }
+  constantVal=5;
+  console.info("this has a typO");
+  console.warn(constantVal);
+  return true;
 }
 
 main().catch((error) => {
